@@ -6,7 +6,8 @@ public class SitThePlayer : MonoBehaviour
 {
     private bool isSitting;
 
-    public Transform sittingPositionOnTheSofa;
+    public Transform sittingPositionOnTheSofaTransform;
+    public GameObject televisionController;
 
     private PlayerMovement playerMovement;
     
@@ -30,11 +31,19 @@ public class SitThePlayer : MonoBehaviour
 
     void SeatThePlayer() {
         playerMovement.enabled = false;
-        transform.position = sittingPositionOnTheSofa.position;
-        transform.rotation = sittingPositionOnTheSofa.rotation;
+        transform.position = sittingPositionOnTheSofaTransform.position;
+        transform.rotation = sittingPositionOnTheSofaTransform.rotation;
+        televisionController.SetActive(true);
     }
 
     void LiftThePlayer() {
+        televisionController.SetActive(false);
+        playerMovement.transform.position = new Vector3(
+            transform.position.x,
+            transform.position.y + 2,
+            transform.position.z
+        );
+        Debug.Log("===> " + playerMovement.transform);
         playerMovement.enabled = true;
     }
 
