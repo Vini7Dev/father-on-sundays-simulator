@@ -43,7 +43,6 @@ public class SitThePlayer : MonoBehaviour
             transform.position.y + 2,
             transform.position.z
         );
-        Debug.Log("===> " + playerMovement.transform);
         playerMovement.enabled = true;
     }
 
