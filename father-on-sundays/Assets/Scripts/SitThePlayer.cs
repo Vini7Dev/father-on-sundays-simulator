@@ -47,7 +47,7 @@ public class SitThePlayer : MonoBehaviour
     }
 
     void OnTriggerStay(Collider other) {
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.Q)) {
             TogglePlayerIsSitting();
         }
     }
