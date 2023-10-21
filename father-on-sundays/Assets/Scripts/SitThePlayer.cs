@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class SitThePlayer : MonoBehaviour
 {
-    private bool isSitting;
+    public bool defaultIsSitting = true, enableToLift;
 
     public Transform sittingPositionOnTheSofaTransform;
     public GameObject televisionController;
 
+    private bool isSitting;
     private PlayerMovement playerMovement;
     
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        isSitting = false;
+        isSitting = !defaultIsSitting;
         TogglePlayerIsSitting();
     }
 
@@ -41,13 +42,13 @@ public class SitThePlayer : MonoBehaviour
         playerMovement.transform.position = new Vector3(
             transform.position.x,
             transform.position.y + 2,
-            transform.position.z
+            transform.position.z - 2
         );
         playerMovement.enabled = true;
     }
 
     void OnTriggerStay(Collider other) {
-        if (Input.GetKeyDown(KeyCode.Q)) {
+        if (enableToLift && Input.GetKeyDown(KeyCode.Q)) {
             TogglePlayerIsSitting();
         }
     }

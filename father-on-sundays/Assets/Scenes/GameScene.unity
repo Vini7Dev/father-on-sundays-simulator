@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44944328, g: 0.49640107, b: 0.5589135, a: 1}
+  m_IndirectSpecularColor: {r: 0.44944376, g: 0.4964016, b: 0.5589146, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11094,7 +11094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &322073436
 Transform:
   m_ObjectHideFlags: 0
@@ -11103,13 +11103,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322073435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.06, y: 0.0000004300415, z: 0}
-  m_LocalScale: {x: 1, y: 1.7, z: 0.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 376120868}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!328 &322073437
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -11118,7 +11118,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322073435}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 71634dd68ee13df41ba64353d283d3c8, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: fa42906439019254c9ce4d6ea58ae6d9, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -13863,7 +13863,7 @@ GameObject:
   - component: {fileID: 376120870}
   - component: {fileID: 376120869}
   m_Layer: 0
-  m_Name: TV_Apt_01
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13877,15 +13877,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376120867}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000015454335, y: 0.70710576, z: -0.000000015454289, w: 0.70710784}
-  m_LocalPosition: {x: -2.0839996, y: 1.7662055, z: 3.6499996}
+  m_LocalRotation: {x: -0.000000015454289, y: 0.70710784, z: -0.000000015454335, w: -0.70710576}
+  m_LocalPosition: {x: 27.084, y: 13.766206, z: -3.6499996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 569139054}
   - {fileID: 343528462}
   - {fileID: 322073436}
-  m_Father: {fileID: 1977725119}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &376120869
 BoxCollider:
@@ -33068,6 +33068,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59798698fa22a045995d503394da365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultIsSitting: 1
+  enableToLift: 0
   sittingPositionOnTheSofaTransform: {fileID: 1637319392}
   televisionController: {fileID: 1950730956}
 --- !u!54 &851934242
@@ -49914,7 +49916,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2028063701}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 437338115, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76752,7 +76754,6 @@ Transform:
   - {fileID: 600446552}
   - {fileID: 2045238365}
   - {fileID: 1055687618}
-  - {fileID: 376120868}
   - {fileID: 1735000530}
   - {fileID: 2124794161}
   - {fileID: 721254880}
@@ -78738,7 +78739,6 @@ Transform:
   - {fileID: 1575954552}
   - {fileID: 757016345}
   - {fileID: 2131416435}
-  - {fileID: 851934238}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031634413
@@ -83855,3 +83855,5 @@ SceneRoots:
   - {fileID: 2028063701}
   - {fileID: 1579230206}
   - {fileID: 1637319392}
+  - {fileID: 376120868}
+  - {fileID: 1292031858}
