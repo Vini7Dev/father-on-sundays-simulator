@@ -9,8 +9,8 @@ public class SitThePlayer : MonoBehaviour
     public Transform sittingPositionOnTheSofaTransform;
     public GameObject televisionController;
 
-    private bool isSitting;
-    private PlayerMovement playerMovement;
+    bool isSitting;
+    PlayerMovement playerMovement;
     
     void Start()
     {
