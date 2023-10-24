@@ -10,11 +10,16 @@ public class TvController : MonoBehaviour
 
     bool on;
     int currentChannel;
+    float normalCameraView = 60, zoomCameraView = 20, currentCameraView, zoomSpeed = 5;
     VideoPlayer screenVideoPlayer;
+    Camera playerCamera;
 
     void Start()
     {
         screenVideoPlayer = screen.GetComponent<VideoPlayer>();
+        GameObject playerCameraObject = GameObject.FindWithTag("MainCamera");
+        playerCamera = playerCameraObject.GetComponent<Camera>();
+        currentCameraView = normalCameraView;
     }
 
     void Update()
@@ -22,6 +27,8 @@ public class TvController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) ToggleTvPower();
         else if (Input.GetKeyDown(KeyCode.R)) NextChannel();
         else if (Input.GetKeyDown(KeyCode.F)) PreviousChannel();
+
+        CameraZoom();
     }
 
     void ToggleTvPower()
@@ -50,5 +57,12 @@ public class TvController : MonoBehaviour
     {
         screenVideoPlayer.clip = channels[currentChannel];
         screenVideoPlayer.Play();
+    }
+
+    void CameraZoom()
+    {
+        float targetCameraView = Input.GetKey(KeyCode.LeftControl) ? zoomCameraView : normalCameraView;
+        currentCameraView = Mathf.Lerp(currentCameraView, targetCameraView, zoomSpeed * Time.deltaTime);
+        playerCamera.fieldOfView = currentCameraView;
     }
 }
