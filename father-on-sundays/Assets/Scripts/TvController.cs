@@ -5,6 +5,7 @@ using UnityEngine.Video;
 
 public class TvController : MonoBehaviour
 {
+    public Animator beerAnimator;
     public GameObject screen;
     public VideoClip[] channels;
 
@@ -24,11 +25,13 @@ public class TvController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) ToggleTvPower();
-        else if (Input.GetKeyDown(KeyCode.R)) NextChannel();
-        else if (Input.GetKeyDown(KeyCode.F)) PreviousChannel();
-
         CameraZoom();
+
+        if (Input.GetKeyDown(KeyCode.Q)) DrinkBeer();
+
+        if (Input.GetKeyDown(KeyCode.E)) ToggleTvPower();
+        else if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.R)) NextChannel();
+        else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F)) PreviousChannel();
     }
 
     void ToggleTvPower()
@@ -64,5 +67,10 @@ public class TvController : MonoBehaviour
         float targetCameraView = Input.GetKey(KeyCode.LeftControl) ? zoomCameraView : normalCameraView;
         currentCameraView = Mathf.Lerp(currentCameraView, targetCameraView, zoomSpeed * Time.deltaTime);
         playerCamera.fieldOfView = currentCameraView;
+    }
+
+    void DrinkBeer()
+    {
+        beerAnimator.SetTrigger("Drink");
     }
 }
