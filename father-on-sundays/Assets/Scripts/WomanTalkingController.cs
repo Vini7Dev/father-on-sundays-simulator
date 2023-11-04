@@ -5,12 +5,14 @@ using UnityEngine;
 public class WomanTalkingController : MonoBehaviour
 {
     bool isTalking;
-    float talkingTimerDuration = 5;
+    float talkingTimerDuration = 9;
     Animator womanAnimator;
+    AudioSource womanVoice;
 
     void Start()
     {
-        womanAnimator = gameObject.GetComponent<Animator>();
+        womanAnimator = GetComponent<Animator>();
+        womanVoice = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -22,6 +24,10 @@ public class WomanTalkingController : MonoBehaviour
     {
         isTalking = true;
         womanAnimator.SetBool("Talking", true);
+
+        yield return new WaitForSeconds(1);
+
+        womanVoice.Play();
 
         yield return new WaitForSeconds(talkingTimerDuration);
 

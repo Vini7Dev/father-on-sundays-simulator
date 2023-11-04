@@ -7,7 +7,13 @@ public class SonTalkingController : MonoBehaviour
     public Animator sonDoorAnimator;
 
     bool isTalking;
-    float talkingTimerDuration = 5;
+    float talkingTimerDuration = 11;
+    AudioSource sonVoice;
+
+    void Start()
+    {
+        sonVoice = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -18,6 +24,10 @@ public class SonTalkingController : MonoBehaviour
     {
         isTalking = true;
         sonDoorAnimator.Play("Opening");
+
+        yield return new WaitForSeconds(0.5f);
+
+        sonVoice.Play();
 
         yield return new WaitForSeconds(talkingTimerDuration);
 
