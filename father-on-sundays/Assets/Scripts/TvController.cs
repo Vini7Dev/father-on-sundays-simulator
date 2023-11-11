@@ -6,6 +6,8 @@ using UnityEngine.Video;
 public class TvController : MonoBehaviour
 {
     public Animator beerAnimator;
+    public AudioSource drinkBeerAudio, changeChannelAudio;
+
     public GameObject screen;
     public VideoClip[] channels;
 
@@ -40,6 +42,12 @@ public class TvController : MonoBehaviour
         screen.SetActive(on);
     }
 
+    public void TurnOffTv()
+    {
+        on = false;
+        screen.SetActive(on);
+    }
+
     void NextChannel()
     {
         if (currentChannel < channels.Length - 1) currentChannel+= 1;
@@ -58,6 +66,7 @@ public class TvController : MonoBehaviour
 
     void ChangeScreenChannel()
     {
+        changeChannelAudio.Play();
         screenVideoPlayer.clip = channels[currentChannel];
         screenVideoPlayer.Play();
     }
@@ -72,5 +81,12 @@ public class TvController : MonoBehaviour
     void DrinkBeer()
     {
         beerAnimator.SetTrigger("Drink");
+		StartCoroutine(DrinkAudioDelay());
+    }
+
+    IEnumerator DrinkAudioDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        drinkBeerAudio.Play();
     }
 }

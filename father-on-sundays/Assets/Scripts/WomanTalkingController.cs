@@ -8,11 +8,15 @@ public class WomanTalkingController : MonoBehaviour
     float talkingTimerDuration = 9;
     Animator womanAnimator;
     AudioSource womanVoice;
+    TvController tvController;
 
     void Start()
     {
         womanAnimator = GetComponent<Animator>();
         womanVoice = GetComponent<AudioSource>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        tvController = player.GetComponent<TvController>();
     }
 
     void Update()
@@ -23,6 +27,7 @@ public class WomanTalkingController : MonoBehaviour
     IEnumerator Talking()
     {
         isTalking = true;
+        tvController.TurnOffTv();
         womanAnimator.SetBool("Talking", true);
 
         yield return new WaitForSeconds(1);

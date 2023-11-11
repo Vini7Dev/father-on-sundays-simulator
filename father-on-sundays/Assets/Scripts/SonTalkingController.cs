@@ -9,10 +9,14 @@ public class SonTalkingController : MonoBehaviour
     bool isTalking;
     float talkingTimerDuration = 11;
     AudioSource sonVoice;
+    TvController tvController;
 
     void Start()
     {
         sonVoice = GetComponent<AudioSource>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        tvController = player.GetComponent<TvController>();
     }
 
     void Update()
@@ -23,6 +27,7 @@ public class SonTalkingController : MonoBehaviour
     IEnumerator Talking()
     {
         isTalking = true;
+        tvController.TurnOffTv();
         sonDoorAnimator.Play("Opening");
 
         yield return new WaitForSeconds(0.5f);
