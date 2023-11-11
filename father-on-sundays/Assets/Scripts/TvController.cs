@@ -8,10 +8,12 @@ public class TvController : MonoBehaviour
     public Animator beerAnimator;
     public AudioSource drinkBeerAudio, changeChannelAudio;
 
-    public GameObject screen;
+    public GameObject screen, woman, son;
     public VideoClip[] channels;
 
-    bool on;
+    public SojaExiles.MouseLook cameraMouseLook;
+
+    bool on, inGameMenu = true;
     int currentChannel;
     float normalCameraView = 60, zoomCameraView = 20, currentCameraView, zoomSpeed = 5;
     VideoPlayer screenVideoPlayer;
@@ -27,6 +29,8 @@ public class TvController : MonoBehaviour
 
     void Update()
     {
+        if (inGameMenu) return;
+
         CameraZoom();
 
         if (Input.GetKeyDown(KeyCode.Q)) DrinkBeer();
@@ -34,6 +38,15 @@ public class TvController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) ToggleTvPower();
         else if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.R)) NextChannel();
         else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.F)) PreviousChannel();
+    }
+
+    public void ToggleInGameMenu()
+    {
+        inGameMenu = !inGameMenu;
+        cameraMouseLook.enabled = !inGameMenu;
+        woman.SetActive(!inGameMenu);
+        son.SetActive(!inGameMenu);
+        GameObject.FindGameObjectWithTag("GameMenu").SetActive(inGameMenu);
     }
 
     void ToggleTvPower()
@@ -50,6 +63,8 @@ public class TvController : MonoBehaviour
 
     void NextChannel()
     {
+        if (!on) return;
+
         if (currentChannel < channels.Length - 1) currentChannel+= 1;
         else currentChannel = 0;
         
@@ -58,6 +73,8 @@ public class TvController : MonoBehaviour
 
     void PreviousChannel()
     {
+        if (!on) return;
+
         if (currentChannel > 0) currentChannel-= 1;
         else currentChannel = channels.Length - 1;
 
